@@ -12,7 +12,7 @@
 		- [1.3 Deque `std::deque`](#13-deque-stddeque)
 		- [1.4 List `std::list` and `std::forward_list`](#14-list-stdlist-and-stdforward_list)
 		- [1.5 Map `std::map` and `std::unordered_map`](#15-map-stdmap-and-stdunordered_map)
-		- [1.6 Set `std::set`](#16-set-stdset)
+		- [1.6 Set `std::set` and Set `std::unordered_set`](#16-set-stdset)
 		- [1.7 Stack `std::stack`](#17-stack-stdstack)
 		- [1.8 Queue `std::queue`](#18-queue-stdqueue)
 		- [1.9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
@@ -333,7 +333,9 @@ bool exists = (m.find("key") != m.end());
 unsigned int count = m.count("key");
 ```
 -------------------------------------------------------
-### 1.6 Set `std::set`
+### 1.6 Set `std::set` and `std::unordered_set`
+
+### Set `std::set`
 **Use for**
 * Removing duplicates
 * Ordered dynamic storage
@@ -387,6 +389,69 @@ bool exists = (s.find(20) != s.end());
 
 // Count the number of elements with a certain value
 unsigned int count = s.count(20);
+```
+
+
+### Unordered Set `std::unordered_set`
+
+#### Use for
+- Removing duplicates
+- Fast average-time performance for insertions, deletions, and lookups
+
+#### Do not use for
+- Ordered storage
+- Direct access by index
+
+#### Notes
+- Unordered sets are often implemented with hash tables
+- Ensure elements have efficient hash functions to avoid collisions
+
+#### Time Complexity
+
+| Operation | Time Complexity (average case) |
+|-----------|--------------------------------|
+| Insert    | O(1)                           |
+| Remove    | O(1)                           |
+| Find      | O(1)                           |
+
+#### Example Code
+
+```cpp
+#include <unordered_set>
+#include <iostream>
+
+std::unordered_set<int> us;
+ 
+//---------------------------------
+// General Operations
+//---------------------------------
+
+// Insert
+us.insert(20);
+
+// Size
+unsigned int size = us.size();
+
+// Iterate
+for(auto it = us.begin(); it != us.end(); it++) {
+    std::cout << *it << std::endl;
+}
+
+// Remove
+us.erase(20);
+
+// Clear
+us.clear();
+
+//---------------------------------
+// Container-Specific Operations
+//---------------------------------
+
+// Find if an element exists
+bool exists = (us.find(20) != us.end());
+
+// Count the number of elements with a certain value
+unsigned int count = us.count(20);
 ```
 -------------------------------------------------------
 ### 1.7 Stack `std::stack`
